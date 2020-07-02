@@ -1,0 +1,46 @@
+{% extends 'shop/basic.html' %}
+{% block title%} Payment Status{% endblock %}
+{% block body %}
+<div class="container">
+
+    <div class="col my-4">
+
+        <h2>Payment status regarding your order Id {{response.ORDERID}}</h2>
+        {% if response.RESPCODE == '01' %}
+        {% load static %}
+        <table>
+            <tr>
+                <td rowspan="2">
+                    <img src="{% static '/shop/giphy.gif' %}" width="190px" height="150px"/>
+                </td>
+                <td>
+                    <h2>Congratulations..!!</h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3>Your Order has been placed for Amount ₹ {{response.TXNAMOUNT}} </h3>
+                </td>
+            </tr>
+            <tr>
+                <a href="/" ><button  type="button" class="btn btn-success">Back To Shopping Adda</button></a>
+                <a href="/shop/tracker/" ><button  type="button" class="btn btn-success ml-2">Track Your Order</button></a>
+
+            </tr>
+
+        </table>
+        {% else %}
+        <h3>ORDER FAILURE</h3><br>
+        {% endif%}
+
+
+
+
+    </div>
+
+</div>
+{% endblock %}
+{% block js %}
+<script>
+</script>
+{% endblock %}
